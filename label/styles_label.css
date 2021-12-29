@@ -1,0 +1,32 @@
+body{
+	background-color: cornflowerblue;
+	margin: 0;
+	/* width: 1920px; */
+	/* height: 1080px; */
+	height: 100vh;
+	width: 100vw;
+	position: relative;
+	/* background-image: url("mosca.png"); */
+}
+
+#label{
+	background-color: white;
+	color: black;
+	width: 100%; /* calc(100% - 10em);*/
+	/* margin-top: 900px; */
+	text-align: center;
+	/* padding: 0.14em 5em; 0.5em 2em 0.5em 2em; */
+	position: absolute;
+	bottom: 35px;
+	/* top: 90px; */
+
+}
+
+#labelText{
+	/* width: 100%; */
+	font-family: "Browallia New";
+	line-height: 0.72;
+	font-size: 60px;
+	margin: 0;
+	padding: 0.14em 2em; 
+}

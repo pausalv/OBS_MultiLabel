@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">	
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Multi-Label OBS</title>
+		<link rel="stylesheet" href="styles_label.css">
+		<script src="../common/js/log.js"></script>
+	</head>
+	<body>
+		<div id="label">
+			<p id="labelText">Label Text</p>
+		</div>
+
+		<script type="text/javascript">
+			var label = document.getElementById('labelText');
+
+			function canviarText(text){
+				label.innerHTML = text;
+			}
+		</script>
+
+	 <script type="text/javascript">
+
+		const bc_rec = new BroadcastChannel('labels-channel');
+		const bc_send = new BroadcastChannel('labels-channel2');
+
+		///////////////////////////
+		bc_rec.onmessage = function (ev) {
+			const received_data = ev.data;
+			if(LOG){
+				console.log(received_data);
+			}
+
+			canviarText(received_data.labels[received_data.activeLabel]);
+
+		}
+
+		bc_send.postMessage({resend: true});
+
+	</script>
+
+  </body>
+</html>

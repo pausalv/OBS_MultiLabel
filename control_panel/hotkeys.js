@@ -1,0 +1,15 @@
+hotkeyLabel1 = 0;
+hotkeyLabel2 = 0;
+hotkeyLabel3 = 0;
+hotkeyLabel4 = 0;
+hotkeyLabel5 = 0;
+hotkeyLabel6 = 0;
+hotkeyLabel7 = 0;
+hotkeyLabel8 = 0;
+hotkeyLabel9 = 0;
+hotkeyLabel10 = 0;
+hotkeyLabel11 = 0;
+hotkeyLabel12 = 0;
+hotkeyLabel13 = 0;
+hotkeyLabel14 = 0;
+hotkeyLabel15 = 0;

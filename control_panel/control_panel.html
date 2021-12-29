@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Multi-Label OBS Control Panel</title>
+		<link rel="stylesheet" href="styles_control_panel.css">
+		<script src="../common/js/log.js"></script>
+		<script src="../common/js/jquery.js"></script>
+		<script src="hotkeys.js"></script>
+	</head>
+	<body>
+		<form id="labels" name="labels">
+		</form>
+
+		<script type="text/javascript">
+
+			function send_function(){
+				if(LOG){
+					console.log("send_function();")
+				}
+
+				bc_send.postMessage({labels, activeLabel});
+				for (var i = 0; i<numberLabels; i++){
+					localStorage.setItem('labels'+i, labels[i]);
+				}
+
+
+			}
+
+			function updateValues(){
+				for(var i = 0; i<numberLabels; i++){
+					labels[i] = labels_DOM[i].value;
+					if(form_DOM.activeLabel[i].checked){
+						activeLabel = i;
+					}
+				}
+
+				if (LOG) {
+					console.log(numberLabels);
+					console.log(labels);	
+				}
+				
+
+				send_function();
+
+			}
+			var numberLabels = 15;
+
+			var labels = [];
+			var activeLabel = 0;
+
+			
+			for (var i = 0; i<numberLabels; i++){
+				labels[i] = localStorage.getItem('labels'+i);
+				if(!labels[i]){
+					var a = i+1;
+					labels[i] = "Label " + a;
+				}
+			}
+
+			if(!activeLabel){
+				activeLabel = 0;
+			}
+
+
+			var labels_DOM = [];
+			var activeLabel_DOM = 0;
+
+			var form_DOM = document.labels;
+
+			for (var i = 0; i<numberLabels; i++){
+				var a = i+1;
+				var div = document.createElement("div");
+				div.classList.add('label');
+				div.classList.add('preference');
+
+				var input_radio = document.createElement('input');
+				input_radio.classList.add('radio');
+				input_radio.type = 'radio';
+				input_radio.id = 'label' + a + '_r';
+				input_radio.name = 'activeLabel';
+				input_radio.value = 'label' + a + '_r';
+
+				if(i==activeLabel){
+					input_radio.checked = true;
+				}
+
+				input_radio.addEventListener('change', updateValues);
+
+				var label = document.createElement('label');
+				label.setAttribute('for','label' + a + '_r')
+				label.innerHTML = a;
+
+				var input_text = document.createElement('input');
+				input_text.type = 'text';
+				input_text.id = 'label' + a;
+				input_text.name = 'label' + a;
+				input_text.value = labels[i];
+				input_text.addEventListener('input', updateValues);
+
+				div.append(input_radio);
+				div.append(label);
+				div.append(input_text);
+
+				form_DOM.append(div);
+				labels_DOM.push(input_text);
+
+			}
+		</script>
+
+		<script>
+
+			var hotkeyLabel1Old = hotkeyLabel1;
+			var hotkeyLabel2Old = hotkeyLabel2;
+			var hotkeyLabel3Old = hotkeyLabel3;
+			var hotkeyLabel4Old = hotkeyLabel4;
+			var hotkeyLabel5Old = hotkeyLabel5;
+			var hotkeyLabel6Old = hotkeyLabel6;
+			var hotkeyLabel7Old = hotkeyLabel7;
+			var hotkeyLabel8Old = hotkeyLabel8;
+			var hotkeyLabel9Old = hotkeyLabel9;
+			var hotkeyLabel10Old = hotkeyLabel10;
+			var hotkeyLabel11Old = hotkeyLabel11;
+			var hotkeyLabel12Old = hotkeyLabel12;
+			var hotkeyLabel13Old = hotkeyLabel13;
+			var hotkeyLabel14Old = hotkeyLabel14;
+			var hotkeyLabel15Old = hotkeyLabel15;
+
+			function updateHotkeys() {
+			    src = 'hotkeys.js';
+			    $('script[src="' + src + '"]').remove();
+			    var head= document.getElementsByTagName('head')[0];
+		    	var script= document.createElement('script');
+		    	script.src= src;
+		    	head.appendChild(script);
+			}
+
+			function checkHotkeys (){
+				if (hotkeyLabel1 != hotkeyLabel1Old){
+					form_DOM.activeLabel[0].checked = true
+					hotkeyLabel1Old = hotkeyLabel1;
+					updateValues();
+				}
+				if (hotkeyLabel2 != hotkeyLabel2Old){
+					form_DOM.activeLabel[1].checked = true
+					hotkeyLabel2Old = hotkeyLabel2;
+					updateValues();
+				}
+				if (hotkeyLabel3 != hotkeyLabel3Old){
+					form_DOM.activeLabel[2].checked = true
+					hotkeyLabel3Old = hotkeyLabel3;
+					updateValues();
+				}
+				if (hotkeyLabel4 != hotkeyLabel4Old){
+					form_DOM.activeLabel[3].checked = true
+					hotkeyLabel4Old = hotkeyLabel4;
+					updateValues();
+				}
+				if (hotkeyLabel5 != hotkeyLabel5Old){
+					form_DOM.activeLabel[4].checked = true
+					hotkeyLabel5Old = hotkeyLabel5;
+					updateValues();
+				}
+				if (hotkeyLabel6 != hotkeyLabel6Old){
+					form_DOM.activeLabel[5].checked = true
+					hotkeyLabel6Old = hotkeyLabel6;
+					updateValues();
+				}
+				if (hotkeyLabel7 != hotkeyLabel7Old){
+					form_DOM.activeLabel[6].checked = true
+					hotkeyLabel7Old = hotkeyLabel7;
+					updateValues();
+				}
+				if (hotkeyLabel8 != hotkeyLabel8Old){
+					form_DOM.activeLabel[7].checked = true
+					hotkeyLabel8Old = hotkeyLabel8;
+					updateValues();
+				}
+				if (hotkeyLabel9 != hotkeyLabel9Old){
+					form_DOM.activeLabel[8].checked = true
+					hotkeyLabel9Old = hotkeyLabel9;
+					updateValues();
+				}
+				if (hotkeyLabel10 != hotkeyLabel10Old){
+					form_DOM.activeLabel[9].checked = true
+					hotkeyLabel10Old = hotkeyLabel10;
+					updateValues();
+				}
+				if (hotkeyLabel11 != hotkeyLabel11Old){
+					form_DOM.activeLabel[10].checked = true
+					hotkeyLabel11Old = hotkeyLabel11;
+					updateValues();
+				}
+				if (hotkeyLabel12 != hotkeyLabel12Old){
+					form_DOM.activeLabel[11].checked = true
+					hotkeyLabel12Old = hotkeyLabel12;
+					updateValues();
+				}
+				if (hotkeyLabel13 != hotkeyLabel13Old){
+					form_DOM.activeLabel[12].checked = true
+					hotkeyLabel13Old = hotkeyLabel13;
+					updateValues();
+				}
+				if (hotkeyLabel14 != hotkeyLabel14Old){
+					form_DOM.activeLabel[13].checked = true
+					hotkeyLabel14Old = hotkeyLabel14;
+					updateValues();
+				}
+				if (hotkeyLabel15 != hotkeyLabel15Old){
+					form_DOM.activeLabel[14].checked = true
+					hotkeyLabel15Old = hotkeyLabel15;
+					updateValues();
+				}
+			}
+
+			//////////////////////////////////////
+
+			var bc_send = new BroadcastChannel('labels-channel'); 
+			var bc_rec = new BroadcastChannel('labels-channel2'); 
+
+			//Receive data from the source
+			bc_rec.onmessage = function (ev) {
+				const received_data = ev.data;
+
+				if (received_data.resend) {
+					send_function();
+				}
+			}
+
+			//////////////////////////////////////
+
+
+			function checkUpdates() {
+				if(LOG){
+					console.log("checkUpdates()");
+				}
+				checkHotkeys();
+				updateHotkeys();
+			}
+
+			setTimeout(send_function,2000);
+			setInterval(() => checkUpdates(), 200);
+
+</script>
+
+	</body>
+</html>
+
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"

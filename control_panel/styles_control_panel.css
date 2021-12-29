@@ -1,0 +1,48 @@
+:root {
+  --interface-size: 1;
+  --obs-background: #3a393a;
+  --obs-field-background: #1f1e1f;
+}
+
+body{
+  background-color: var(--obs-background);
+  color: #d2d2d2;
+}
+
+.preference{
+  display: flex;
+  justify-content: space-between;
+}
+
+input.radio{
+  display: none;
+}
+
+.label{
+  margin: 3px 0;
+}
+
+input:checked + label{
+  color: red;
+}
+
+.label label{
+  width: 20px;
+  padding: .4em;
+  text-align: right;
+}
+
+
+.label input[type="text"]{
+  width: 100%;
+  /* margin-left: 5px; */
+
+}
+
+input[type="text"], input[type="number"]{
+  color: #d2d2d2;
+  background: var(--obs-field-background);
+  border: none;
+  padding: .4em;
+  border-radius: 2px 0 0 2px;
+}
