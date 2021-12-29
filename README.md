@@ -1,4 +1,4 @@
-# Multiple layer plugin for OBS
+# Multiple label plugin for OBS
 
 TODO:
  - Add documentation
