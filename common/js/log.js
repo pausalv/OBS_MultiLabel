@@ -1,1 +1,1 @@
-LOG = true;
+LOG = false;

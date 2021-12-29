@@ -7,8 +7,7 @@
 		<title>Multi-Label OBS Control Panel</title>
 		<link rel="stylesheet" href="styles_control_panel.css">
 		<script src="../common/js/log.js"></script>
-		<script src="../common/js/jquery.js"></script>
-		<script src="hotkeys.js"></script>
+		<script src="hotkeys.js" id="hotkeys"></script>
 	</head>
 	<body>
 		<form id="labels" name="labels">
@@ -130,11 +129,16 @@
 
 			function updateHotkeys() {
 			    src = 'hotkeys.js';
-			    $('script[src="' + src + '"]').remove();
-			    var head= document.getElementsByTagName('head')[0];
+			    
+				var script_DOM = document.getElementById("hotkeys");
+			    var head_DOM = document.head;//getElementsByTagName('head')[0];
+				head_DOM.removeChild(script_DOM);
+
 		    	var script= document.createElement('script');
 		    	script.src= src;
-		    	head.appendChild(script);
+				script.id = 'hotkeys';
+		    	
+				head_DOM.appendChild(script);
 			}
 
 			function checkHotkeys (){
